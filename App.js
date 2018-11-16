@@ -1,21 +1,36 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, View, Text } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
+
+import HomeScreen from './components/Home.js';
+import ChildHomeScreen from './components/ChildHome.js'
+import TeacherHomeScreen from './components/TeacherHome.js'
+import BuyerHomeScreen from './components/BuyerHome.js'
+
+
+const RootStack = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Child: {
+      screen : ChildHomeScreen
+    },
+    Teacher : {
+      screen : TeacherHomeScreen
+    },
+    Buyer : {
+      screen : BuyerHomeScreen
+    }
+
+  },
+  {
+    initialRouteName: 'Home',
+  }
+);
 
 export default class App extends React.Component {
   render() {
-    return (
-      <View style={styles.container}>
-        <Text>Hello world</Text>
-      </View>
-    );
+    return <RootStack />;
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
